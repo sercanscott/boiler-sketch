@@ -1,6 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
-import { Component, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+
+// const object = {
+//   a: 1,
+//   b: 2,
+//   c: 3,
+// };
+
+// const { c, ...restOfObject } = object;
+
+// a => 1;
+
+// restOfObject = {
+//   b: 2,
+//   c: 3
+// }
+
+// const arr = ['a', 'b', 'c', 'd'];
+// const [,...restOfArray] = arr;
 
 // // state
 // class Example {
@@ -75,16 +94,30 @@ import { Component, useEffect, useState } from 'react';
 //   }
 // }
 
+const useEventListener = ({
+  eventType,
+  callback,
+  element = document,
+}) => {
+  useEffect(() => {
+    element.addEventListener(eventType, callback);
 
+    return () => {
+      // clean-up function
+      element.removeEventListener(eventType, callback);
+    }
+  }, [callback, eventType, element]);
+}
 
 const FunctionalState = props => {
   // hooks
-  // useState
-  const [buttonClicked, setButtonClicked] = useState(false);
+  // useEffect
+  const listener = () => console.log('listening');
 
-  function handleClick() {
-    setButtonClicked(!buttonClicked);
-  }
+  useEventListener({
+    eventType: 'click',
+    callback: listener,
+  });
 
   return (
     <div className="App">
@@ -93,19 +126,29 @@ const FunctionalState = props => {
         <p>
           {props.selam}
         </p>
-        <button type="button" onClick={handleClick}>
-          Click me
-        </button>
-        <div>
-          {buttonClicked ? 'Clicked' : 'Not Clicked'}
-        </div>
       </header>
     </div>
   );
 };
 
+const OtherCompenent = () => {
+  return <div>Selam</div>;
+}
+
 const ComponentRenderer = props => {
-  
+  const [clicked, setClicked] = useState(false);
+  const onClick = () => {
+    setClicked(!clicked);
+  }
+
+  return (
+    <div>
+      <button type="button" onClick={onClick}>
+        Click me
+      </button>
+      {clicked ? <FunctionalState /> : <OtherCompenent />}
+    </div>
+  )
 };
 
 export default ComponentRenderer;
