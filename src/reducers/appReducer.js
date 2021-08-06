@@ -1,8 +1,40 @@
+import I from 'immutable';
 import { EXAMPLE_ACTION } from '../constants/actionTypes';
 
-const INITIAL_STATE = {
-  exampleStoreVariable: 'Todays Date',
+// const INITIAL_STATE = {
+//   storeDate: 'Todays Date',
+// };
+
+const stateObject = {
+  storeDate: 'Todays Date',
+  nestedObject: {
+    jotform: ['vin', 'sercan'],
+    merhabaspektrum: {
+      vin: 'technical',
+      deniz: 'writer',
+    },
+  }
 };
+
+const INITIAL_STATE_IMMUTABLE = I.fromJS(stateObject);
+
+// change vin to designer.
+// in native js
+// const newObject = {
+//   ...stateObject,
+//   nestedObject: {
+//     ...stateObject.nestedObject,
+//     merhabaspektrum: {
+//       ...stateObject.nestedObject.merhabaspektrum,
+//       vin: 'designer'
+//     }
+//   }
+// };
+// // in immutablejs
+// const newImmutableObject = stateObject.setIn(
+//   ['nestedObject', 'merhabaspektrum', 'vin'],
+//   'designer'
+// );
 
 // JS Object Mutation Example
 // // JS data types, primitive (bool, string, integer|number) cannot be mutated
@@ -45,15 +77,18 @@ const INITIAL_STATE = {
 // console.log(newObject);
 // // JS Object Mutation Example
 
-const appReducer = (state = INITIAL_STATE, action) => {
+const appReducer = (state = INITIAL_STATE_IMMUTABLE, action) => {
   switch (action.type) {
     case EXAMPLE_ACTION:
       // mutation is not acceptable for redux. this is an illegal example
-      // state.exampleStoreVariable = action.payload.examplePayload;
-      return {
-        ...state,
-        exampleStoreVariable: action.payload.examplePayload,
-      };
+      // state.storeDate = action.payload.examplePayload;
+      // native js example below
+      // return {
+      //   ...state,
+      //   storeDate: action.payload.examplePayload,
+      // };
+      // immutable setting example
+      return state.set('storeDate', action.payload.examplePayload);
     default:
       return state;
   }
