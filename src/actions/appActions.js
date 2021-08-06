@@ -1,6 +1,6 @@
 import { EXAMPLE_ACTION } from '../constants/actionTypes';
 
-// this is called an `action creator`
+// EXAMPLE: this is called an `action creator`
 export const exampleAction = () => {
   // returns an object
   return {

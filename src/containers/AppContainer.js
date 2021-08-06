@@ -19,13 +19,16 @@ const AppContainer = props => {
   );
 };
 
+// EXAMPLE: mapStateToProps
 const mapStateToProps = state => {
+  // EXAMPLE: immutableJS get method
   // normal js object => object[key] and or object.key
   // immutablejs map => I.Map().get('wantedKey', 'defaultValue')
   return {
-    // storeProp: state.storeDate,
-    // storeProp: state.app.get('storeDate'),
-    storeProp: getStoreDate(state),
+    // EXAMPLE: Getting a store value in three different ways
+    // storeProp: state.storeDate, // not good
+    // storeProp: state.app.get('storeDate'), // not good
+    storeProp: getStoreDate(state), // gooood
   };
 }
 

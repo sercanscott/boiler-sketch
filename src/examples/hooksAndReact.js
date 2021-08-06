@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 
-
+// EXAMPLE: Spread operators and deconstructing
 // const object = {
 //   a: 1,
 //   b: 2,
@@ -21,6 +21,7 @@ import { useEffect, useState } from 'react';
 // const arr = ['a', 'b', 'c', 'd'];
 // const [,...restOfArray] = arr;
 
+// EXAMPLE: JS Class syntax
 // // state
 // class Example {
 //   constructor() {
@@ -36,6 +37,7 @@ import { useEffect, useState } from 'react';
 //   }
 // }
 
+// EXAMPLE: React Class Components with lifecycle methods
 // class ExampleComponent extends Component {
 //   constructor(props) {
 //     super(props);
@@ -94,6 +96,8 @@ import { useEffect, useState } from 'react';
 //   }
 // }
 
+
+// EXAMPLE: Custom hooks
 const useEventListener = ({
   eventType,
   callback,
@@ -109,6 +113,7 @@ const useEventListener = ({
   }, [callback, eventType, element]);
 }
 
+// EXAMPLE: Function React Component with Hooks
 const FunctionalState = props => {
   // hooks
   // useEffect
@@ -153,8 +158,7 @@ const ComponentRenderer = props => {
 
 export default ComponentRenderer;
 
-// functional
-
+// EXAMPLE: Pure function react component
 // function App() {
 //   return (
 //     <div className="App">
