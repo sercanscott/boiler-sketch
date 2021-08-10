@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useRef, forwardRef } from 'react';
 import { connect } from 'react-redux';
 
 import { exampleAction } from '../actions/appActions';
 import { getStoreDate } from '../selectors/appSelector';
 
+// EXAMPLE: Forwarding Refs
+const WrapperSimple = (props, ref) => {
+  return (
+    <div ref={ref}>
+      {props.children}
+    </div>
+  )
+};
+
+const Wrapper = forwardRef(WrapperSimple);
+
+
 const AppContainer = props => {
+  // EXAMPLE: useRef usage
+  const containerRef = useRef(null);
+
   const onClick = () => {
     props.exampleAction();
   }
 
   return (
-    <div>
+    <Wrapper ref={containerRef}>
       {props.storeProp}
       <button type="button" onClick={onClick}>
         Click Me
       </button>
-    </div>
+    </Wrapper>
   );
 };
 

@@ -6,6 +6,8 @@ import createSagaMiddleware from 'redux-saga'
 
 import './index.css';
 import AppContainer from './containers/AppContainer';
+import SimpleContainer from './containers/SimpleContainer';
+import HookContainer from './containers/HookContainer';
 
 import reducers from './reducers';
 import rootSaga from './sagas';
@@ -42,6 +44,8 @@ ReactDOM.render(
   <Provider store={store}>
     <StrictMode>
       <AppContainer />
+      <SimpleContainer />
+      <HookContainer />
     </StrictMode>
   </Provider>,
   document.getElementById('root')
